@@ -303,7 +303,8 @@ ax.legend()
 
 ```
 
-![  ] (/figures/figure10.png)
+![ ] (/figures/figure10.png)
 
+END
 
 
