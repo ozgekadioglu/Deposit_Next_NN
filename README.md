@@ -50,7 +50,7 @@ data.describe()
 ```
 There are lots of outliers for each input feature. After creating a benchmarking model, I will train a model for the datapoints where the outliers of tenure are removed. (outlier=3*std)
 
-[figures/figure1]
+[/figures/figure1.png]
 
 # Benchmark Model
 First model will be trained by using all the datapoints available in the dataset.
@@ -107,7 +107,7 @@ ax.set_title('Benchmark Model')
 ax.legend()
 
 ```
-[image:6CCE0F70-50CC-4DE1-8BFB-5A0E7BEF71E0-33519-000008919BFD9337/unknown.png]
+[/figures/figure2.png]
 Around epochs=230 we can stop the training since the validation loss reaches the minimum. If we train the model more than necessary there is the risk of overfitting as the model won’t be able to generalize.
 
 ```
@@ -115,7 +115,7 @@ model_b.fit(X_train,y_train,epochs=230,batch_size=64,validation_data=[X_test,y_t
 print('Final MAE of validation: %f' %(model_b.evaluate(X_test, y_test)[1]))
 ```
 
-[image:37A76605-CE39-460B-84E0-486E5DF37B90-33519-00000892A3297C09/Screen Shot 2022-03-17 at 22.29.34.png]
+[/figures/figure3.png]
 
 # Feature Engineering
 By using the features that we have, one can create new features. By comparing the deposit and deposit_next of the users, we can find out which users decided to put more money in their account than before or which users simply didn’t invest more in the next 30 days. 
@@ -164,7 +164,7 @@ data['level'] = data.apply(lambda x: get_level(x.tenure), axis=1)
 data.head()
 ```
 
-[image:AB1E89CF-F763-406C-BA18-663EC76B2E47-33519-00000893CEA363FE/Screen Shot 2022-03-17 at 22.33.04.png]
+[/figures/figure4.png]
 
 ## Label Encoding:
 Since the new feature is a categorical feature, I will use label encoding to include its effect on the output.
@@ -215,13 +215,13 @@ ax.grid()
 ax.legend()
 ```
 
-[image:D399CD15-7757-4D6E-8220-B5843978AF1E-33519-00000898C248EA43/unknown.png]
+[/figures/figure5.png]
 ```
 model1.fit(X_train,y_train,epochs=40,batch_size=64,validation_data=[X_test,y_test])
 print('Final MAE of validation: %f' %(model1.evaluate(X_test, y_test)[1]))
 ```
 
-[image:64F3C464-80D6-4F95-9BBB-AF7B22DD072A-33519-000008993ED4D623/Screen Shot 2022-03-17 at 22.49.16.png]
+[/figures/figure6.png]
 Performance of the model didn’t improve.
 
 # Does removing the outliers in the tenure column improve the performance?
@@ -231,7 +231,7 @@ data_noout = data[data.tenure<data.std().tenure*3]
 print(data_noout.shape)
 ```
 
-[image:413FFD80-C0F8-4B8E-9D56-34AB5312E651-33519-0000082A34276D39/Screen Shot 2022-03-17 at 16.48.01.png]
+[/figures/figure7.png]
 
 1094 datapoints were removed.
 ```
@@ -269,7 +269,7 @@ ax.grid()
 ax.legend()
 
 ```
-[image:55A9C739-AE6F-4F99-B4B4-01C038E1DA63-33519-0000089D446BC529/unknown.png]
+[/figures/figure8.png]
 
 ```
 model2.fit(X_train,y_train,epochs=230,batch_size=64,validation_data=[X_test,y_test])
@@ -277,7 +277,7 @@ print('Final MAE of validation: %f' %(model2.evaluate(X_test, y_test)[1]))
 ```
 
 Final MAE of validation: 454.693756
-[image:DEB2651F-9A90-43B3-95AC-E800E54D6DE1-33519-0000089DDC3AFBE6/Screen Shot 2022-03-17 at 23.03.04.png]
+[/figures/figure9.png]
 Model improved.
 
 # Comparing the 3 models:
@@ -300,6 +300,6 @@ ax.legend()
 
 ```
 
-[image:8D372709-EC71-43DA-BD0D-2D39AB79CC2E-33519-0000089E5C84E8FE/unknown.png]
+[/figures/figure10.png]
 
 
