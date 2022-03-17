@@ -108,6 +108,7 @@ ax.legend()
 
 ```
 ![ ](/figures/figure2.png)
+
 Around epochs=230 we can stop the training since the validation loss reaches the minimum. If we train the model more than necessary there is the risk of overfitting as the model won’t be able to generalize.
 
 ```
@@ -159,7 +160,7 @@ data['won_min_once'] = data.apply(lambda x: did_win(x.deposit, x.turnover), axis
 data['level'] = data.apply(lambda x: get_level(x.tenure), axis=1)
 ```
 
- *I can use only 'won_min_once' and ‘level’ as a new input feature* since the other two new columns were created by using the target.
+I can use only 'won_min_once' and ‘level’ as a new input feature since the other two new columns were created by using the target.
 ```
 data.head()
 ```
@@ -216,6 +217,7 @@ ax.legend()
 ```
 
 ![ ](/figures/figure5.png)
+
 ```
 model1.fit(X_train,y_train,epochs=40,batch_size=64,validation_data=[X_test,y_test])
 print('Final MAE of validation: %f' %(model1.evaluate(X_test, y_test)[1]))
@@ -278,6 +280,7 @@ print('Final MAE of validation: %f' %(model2.evaluate(X_test, y_test)[1]))
 
 Final MAE of validation: 454.693756
 ![ ](/figures/figure9.png)
+
 Model improved.
 
 # Comparing the 3 models:
