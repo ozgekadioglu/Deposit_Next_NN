@@ -107,7 +107,7 @@ ax.set_title('Benchmark Model')
 ax.legend()
 
 ```
-(/figures/figure2.png)
+![ ](/figures/figure2.png)
 Around epochs=230 we can stop the training since the validation loss reaches the minimum. If we train the model more than necessary there is the risk of overfitting as the model won’t be able to generalize.
 
 ```
@@ -115,7 +115,7 @@ model_b.fit(X_train,y_train,epochs=230,batch_size=64,validation_data=[X_test,y_t
 print('Final MAE of validation: %f' %(model_b.evaluate(X_test, y_test)[1]))
 ```
 
-[/figures/figure3.png]
+![ ](/figures/figure3.png)
 
 # Feature Engineering
 By using the features that we have, one can create new features. By comparing the deposit and deposit_next of the users, we can find out which users decided to put more money in their account than before or which users simply didn’t invest more in the next 30 days. 
@@ -164,7 +164,7 @@ data['level'] = data.apply(lambda x: get_level(x.tenure), axis=1)
 data.head()
 ```
 
-[/figures/figure4.png]
+![ ](/figures/figure4.png)
 
 ## Label Encoding:
 Since the new feature is a categorical feature, I will use label encoding to include its effect on the output.
@@ -215,13 +215,13 @@ ax.grid()
 ax.legend()
 ```
 
-[/figures/figure5.png]
+![ ](/figures/figure5.png)
 ```
 model1.fit(X_train,y_train,epochs=40,batch_size=64,validation_data=[X_test,y_test])
 print('Final MAE of validation: %f' %(model1.evaluate(X_test, y_test)[1]))
 ```
 
-[/figures/figure6.png]
+![ ](/figures/figure6.png)
 Performance of the model didn’t improve.
 
 # Does removing the outliers in the tenure column improve the performance?
@@ -231,7 +231,7 @@ data_noout = data[data.tenure<data.std().tenure*3]
 print(data_noout.shape)
 ```
 
-[/figures/figure7.png]
+![ ](/figures/figure7.png)
 
 1094 datapoints were removed.
 ```
@@ -269,7 +269,7 @@ ax.grid()
 ax.legend()
 
 ```
-[/figures/figure8.png]
+![ ] (/figures/figure8.png)
 
 ```
 model2.fit(X_train,y_train,epochs=230,batch_size=64,validation_data=[X_test,y_test])
@@ -277,7 +277,7 @@ print('Final MAE of validation: %f' %(model2.evaluate(X_test, y_test)[1]))
 ```
 
 Final MAE of validation: 454.693756
-[/figures/figure9.png]
+![ ](/figures/figure9.png)
 Model improved.
 
 # Comparing the 3 models:
@@ -300,6 +300,6 @@ ax.legend()
 
 ```
 
-[/figures/figure10.png]
+![ ] (/figures/figure10.png)
 
 
