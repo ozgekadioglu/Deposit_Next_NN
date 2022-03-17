@@ -50,7 +50,7 @@ data.describe()
 ```
 There are lots of outliers for each input feature. After creating a benchmarking model, I will train a model for the datapoints where the outliers of tenure are removed. (outlier=3*std)
 
-(/figures/figure1.png)
+![ ](/figures/figure1.png)
 
 # Benchmark Model
 First model will be trained by using all the datapoints available in the dataset.
